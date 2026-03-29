@@ -1,0 +1,660 @@
+/* ===========================
+   Netflix-Inspired Styles
+   =========================== */
+
+* {
+    /* Remove margens padrão de todos os elementos */
+    margin: 0;
+    /* Remove paddings padrão de todos os elementos */
+    padding: 0;
+    /* Define o modelo de caixa para não adicionar padding e border ao tamanho total */
+    box-sizing: border-box;
+}
+
+/* Root Colors - Define variáveis de cor globais */
+:root {
+    /* Cor preta principal usada em fundos */
+    --netflix-black: #141414;
+  
+    /* Cor branca para textos */
+    --netflix-white: #f5f5f1;
+    /* Cor cinza para textos secundários */
+    --netflix-gray: #808080;
+    /* Cor preta mais escura para efeitos de gradiente */
+    --netflix-dark-gray: #221f1f;
+
+    /* Cores de fundo do tema */
+    --bg-primary: var(--netflix-black);
+    --bg-secondary: var(--netflix-dark-gray);
+    /* Cores de texto do tema */
+    --text-primary: var(--netflix-white);
+    --text-secondary: var(--netflix-gray);
+    /* Cores de destaque */
+    --accent-color: var(--netflix-white);
+}
+
+/* Light Mode - Variáveis para tema claro */
+html[data-theme="light"] {
+    /* Fundo claro para light mode */
+    --bg-primary: #f5f5f1;
+    --bg-secondary: #e8e8e3;
+    /* Texto escuro para light mode */
+    --text-primary: #141414;
+    --text-secondary: #666666;
+    /* Manter o vermelho Netflix */
+    --accent-color: var(--netflix-red);
+}
+
+/* ===========================
+   Global Styles
+   =========================== */
+
+html,
+body {
+    /* Define a fonte principal do site */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Define a cor de fundo usando variável de tema */
+    background-color: var(--bg-primary);
+    /* Define a cor do texto usando variável de tema */
+    color: var(--text-primary);
+    /* Define o espaçamento entre linhas de texto */
+    line-height: 1.6;
+    /* Faz o elemento ocupar 100% da altura da viewport */
+    height: 100%;
+    /* Esconde barras de scroll horizontais */
+    overflow-x: hidden;
+    /* Transição suave ao mudar o tema */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===========================
+   Main Content
+   =========================== */
+
+main {
+    /* Ativa o display flexbox para alinhar itens */
+    display: flex;
+    /* Define a direção dos itens em coluna (vertical) */
+    flex-direction: column;
+    /* Centraliza itens verticalmente */
+    justify-content: center;
+    /* Centraliza itens horizontalmente */
+    align-items: center;
+    /* Define altura mínima como 100% da viewport */
+    min-height: 100vh;
+    /* Adiciona espaçamento interno de 2rem */
+    padding: 2rem;
+    /* Cria um gradiente de fundo usando variáveis de tema */
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    /* Transição suave ao mudar o tema */
+    transition: background 0.3s ease;
+}
+
+h1 {
+    /* Define o tamanho da fonte como 3.5 vezes o tamanho base */
+    font-size: 3.5rem;
+    /* Define a espessura da fonte como 700 (bold) */
+    font-weight: 700;
+    /* Adiciona espaço abaixo do título */
+    margin-bottom: 4rem;
+    /* Aumenta o espaço entre as letras */
+    letter-spacing: 2px;
+    /* Define a cor do texto usando variável de tema */
+    color: var(--text-primary);
+    /* Transforma o texto em maiúsculas */
+    text-transform: uppercase;
+    /* Aplica animação de entrada suave */
+    animation: fadeInDown 0.8s ease-out;
+    /* Transição suave ao mudar o tema */
+    transition: color 0.3s ease;
+}
+
+/* ===========================
+   Perfis Section
+   =========================== */
+
+.perfis {
+    /* Ativa o display grid para criar um layout em grade */
+    display: grid;
+    /* Define colunas responsivas com mínimo de 150px e máximo automático */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Define espaçamento de 3rem entre os itens */
+    gap: 3rem;
+    /* Define a largura máxima do container */
+    max-width: 800px;
+    /* Aplica animação de entrada com delay de 0.2s */
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    /* Remove o estilo padrão de lista não ordenada */
+    list-style: none;
+}
+
+.perfis li {
+    /* Define posicionamento relativo para as ações absolutas */
+    position: relative;
+    /* Centraliza o conteúdo */
+    display: flex;
+    /* Apila items verticalmente */
+    flex-direction: column;
+    /* Centraliza no eixo transversal */
+    align-items: center;
+}
+
+/* ===========================
+   Botão do Perfil
+   =========================== */
+
+.perfil {
+    /* Ativa o display flexbox */
+    display: flex;
+    /* Define a direção em coluna (vertical) */
+    flex-direction: column;
+    /* Centraliza itens horizontalmente */
+    align-items: center;
+    /* Espaçamento de 1rem entre foto e nome */
+    gap: 1rem;
+    /* Remove cor de fundo padrão */
+    background: transparent;
+    /* Remove borda padrão do botão */
+    border: none;
+    /* Muda o cursor para pointer ao passar sobre */
+    cursor: pointer;
+    /* Define transição suave para transformação e filtro */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    /* Adiciona espaçamento interno */
+    padding: 1rem;
+    /* Define cantos arredondados */
+    border-radius: 0.5rem;
+}
+
+.perfil:hover {
+    /* Aumenta o tamanho do elemento em 10% ao passar o mouse */
+    transform: scale(1.1);
+     
+}
+
+.perfil:active {
+    /* Diminui o tamanho do elemento ao clicar */
+    transform: scale(0.95);
+}
+
+/* Imagem do Perfil */
+.perfil img {
+    /* Define largura da imagem como 150px */
+    width: 150px;
+    /* Define altura da imagem como 150px */
+    height: 150px;
+    /* Faz a imagem preencher o espaço mantendo a proporção */
+    object-fit: cover;
+    /* Define cantos arredondados */
+    border-radius: 0.5rem;
+    /* Cria uma borda transparente para animação suave */
+    border: 3px solid transparent;
+    /* Define transição suave para todas as propriedades */
+    transition: all 0.3s ease;
+    /* Cria uma sombra sob a imagem */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.perfil:hover img {
+    /* Altera a cor da borda para vermelho Netflix ao passar o mouse */
+    border-color: var(--accent-color);
+   
+}
+
+/* Texto do Perfil */
+.perfil span {
+    /* Define o tamanho da fonte como 1.2 vezes o tamanho base */
+    font-size: 1.2rem;
+    /* Define a espessura da fonte como 500 (semi-bold) */
+    font-weight: 500;
+    /* Define a cor do texto usando variável de tema */
+    color: var(--text-secondary);
+    /* Define transição suave para mudança de cor */
+    transition: color 0.3s ease;
+    /* Transforma a primeira letra em maiúscula */
+    text-transform: capitalize;
+}
+
+.perfil:hover span {
+    /* Altera a cor do texto para primária ao passar o mouse */
+    color: var(--text-primary);
+}
+
+/*========GERENCIAR PERFIS========*/
+.gerenciar{
+    margin-top: 20px;
+}
+
+.botao-gerenciar {
+    /* Define o estilo do botão de gerenciar perfis */
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+    padding: 10px 30px;
+    font-size: 1vw;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: 200;
+    transition: all 0.3s;
+}
+
+.botao-gerenciar:hover {
+    /* Altera o estilo do botão ao passar o mouse */
+    border-color: #e5e5e5;
+    color: white;
+   
+}
+
+/* ===========================
+   Animações
+   =========================== */
+
+@keyframes fadeInDown {
+    /* Estado inicial da animação */
+    from {
+        /* Elemento invisível no início */
+        opacity: 0;
+        /* Elemento começa 30px acima da posição final */
+        transform: translateY(-30px);
+    }
+    /* Estado final da animação */
+    to {
+        /* Elemento totalmente visível */
+        opacity: 1;
+        /* Elemento na posição final */
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    /* Estado inicial da animação */
+    from {
+        /* Elemento invisível no início */
+        opacity: 0;
+        /* Elemento começa 30px abaixo da posição final */
+        transform: translateY(30px);
+    }
+    /* Estado final da animação */
+    to {
+        /* Elemento totalmente visível */
+        opacity: 1;
+        /* Elemento na posição final */
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   Responsive Design - Mobile First
+   =========================== */
+
+/* Extra Large Desktop - 1920px e acima (TVs inteligentes e monitores grandes) */
+@media (min-width: 1920px) {
+    h1 {
+        /* Aumenta bastante o tamanho da fonte para telas muito grandes */
+        font-size: 4.5rem;
+        /* Aumenta o espaço abaixo do título */
+        margin-bottom: 5rem;
+        /* Aumenta o espaçamento entre letras */
+        letter-spacing: 3px;
+    }
+
+    .perfis {
+        /* Aumenta o espaçamento entre perfis em telas grandes */
+        gap: 4rem;
+        /* Define a largura máxima maior */
+        max-width: 1200px;
+        /* Define colunas com mais itens por linha */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .perfil img {
+        /* Aumenta o tamanho das imagens para telas grandes */
+        width: 200px;
+        height: 200px;
+    }
+
+    .perfil span {
+        /* Aumenta o tamanho da fonte do nome */
+        font-size: 1.5rem;
+    }
+
+    main {
+        /* Aumenta o padding para telas grandes */
+        padding: 3rem;
+    }
+}
+
+/* Large Desktop - 1200px a 1919px (Monitores full HD e acima) */
+@media (min-width: 1200px) and (max-width: 1919px) {
+    h1 {
+        /* Mantém um tamanho grande de fonte */
+        font-size: 4rem;
+        /* Define espaço abaixo do título */
+        margin-bottom: 4.5rem;
+    }
+
+    .perfis {
+        /* Define espaçamento adequado para desktop */
+        gap: 3.5rem;
+        /* Define a largura máxima */
+        max-width: 1000px;
+    }
+
+    .perfil img {
+        /* Aumenta ligeiramente o tamanho das imagens */
+        width: 180px;
+        height: 180px;
+    }
+
+    .perfil span {
+        /* Aumenta o tamanho da fonte do nome */
+        font-size: 1.3rem;
+    }
+
+    main {
+        /* Aumenta o padding para desktop */
+        padding: 2.5rem;
+    }
+}
+
+/* Standard Desktop - 768px a 1199px (Tablets em paisagem) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    h1 {
+        /* Tamanho médio de fonte para tablets */
+        font-size: 2.8rem;
+        /* Define espaço abaixo do título */
+        margin-bottom: 3rem;
+        /* Reduz o espaçamento entre letras */
+        letter-spacing: 1.5px;
+    }
+
+    .perfis {
+        /* Define espaçamento para tablets */
+        gap: 2.5rem;
+        /* Define a largura máxima */
+        max-width: 700px;
+    }
+
+    main {
+        /* Padding moderado para tablets */
+        padding: 2rem;
+    }
+
+    .perfil {
+        /* Pequeno aumento de padding */
+        padding: 0.75rem;
+    }
+
+    .perfil img {
+        /* Tamanho médio de imagem */
+        width: 140px;
+        height: 140px;
+    }
+
+    .perfil span {
+        /* Tamanho médio de fonte */
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet Portrait - 481px a 767px (Tablets em retrato) */
+@media (min-width: 481px) and (max-width: 767px) {
+    h1 {
+        /* Reduz o tamanho da fonte para tablets */
+        font-size: 2rem;
+        /* Reduz o espaço abaixo do título */
+        margin-bottom: 2.5rem;
+    }
+
+    .perfis {
+        /* Reduz o espaçamento entre perfis */
+        gap: 2rem;
+        /* Ajusta a largura máxima */
+        max-width: 500px;
+        /* Define colunas responsivas para tablet */
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    main {
+        /* Padding apropriado para tablets */
+        padding: 1.5rem;
+    }
+
+    .perfil {
+        /* Pequeno padding */
+        padding: 0.75rem;
+    }
+
+    .perfil img {
+        /* Tamanho reduzido para tablets */
+        width: 130px;
+        height: 130px;
+    }
+
+    .perfil span {
+        /* Tamanho reduzido de fonte */
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Portrait - 320px a 480px (Celulares) */
+@media (max-width: 480px) {
+    h1 {
+        /* Reduz significativamente o tamanho da fonte para mobile */
+        font-size: 1.8rem;
+        /* Reduz o espaço abaixo do título */
+        margin-bottom: 1.5rem;
+        /* Remove o letter-spacing para economizar espaço */
+        letter-spacing: 1px;
+    }
+
+    .perfis {
+        /* Reduz bastante o espaçamento entre perfis */
+        gap: 1.25rem;
+        /* Define width máxima apropriada */
+        max-width: 100%;
+        /* Força apenas 2-3 perfis por linha no mobile */
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    main {
+        /* Reduz o padding para mobile */
+        padding: 1rem;
+        /* Padding horizontal mínimo para evitar toque nas bordas */
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .perfil {
+        /* Reduz o padding interno */
+        padding: 0.5rem;
+        /* Aumenta a área de toque para acessibilidade */
+        min-height: 140px;
+        /* Centraliza o conteúdo */
+        justify-content: center;
+    }
+
+    .perfil img {
+        /* Reduz significativamente o tamanho das imagens */
+        width: 100px;
+        height: 100px;
+        /* Reduz a sombra para economizar performance */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .perfil span {
+        /* Reduz o tamanho da fonte do nome */
+        font-size: 0.85rem;
+        /* Reduz o espaço entre imagem e nome */
+    }
+
+    .perfil:hover {
+        /* Reduz a transformação no hover para mobile (touch-friendly) */
+        transform: scale(1.05);
+    }
+
+    .perfil:active {
+        /* Mantém o feedback tátil */
+        transform: scale(0.98);
+    }
+}
+
+
+/* Extra Small Mobile - 320px a 374px (Celulares muito pequenos) */
+@media (max-width: 374px) {
+    h1 {
+        /* Reduz ainda mais o tamanho para celulares muito pequenos */
+        font-size: 1.4rem;
+        /* Reduz ainda mais o espaço */
+        margin-bottom: 1.25rem;
+    }
+
+    .perfis {
+        /* Reduz o gap para telas mínimas */
+        gap: 1rem;
+        /* Apenas 2 perfis por linha */
+        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    }
+
+    main {
+        /* Padding mínimo */
+        padding: 0.75rem;
+    }
+
+    .perfil img {
+        /* Reduz drasticamente o tamanho */
+        width: 85px;
+        height: 85px;
+    }
+
+    .perfil span {
+        /* Reduz bastante o tamanho da fonte */
+        font-size: 0.75rem;
+    }
+}
+
+/* Orientação Landscape (Paisagem) - Para celulares em modo paisagem */
+@media (max-height: 500px) {
+    h1 {
+        /* Reduz o tamanho da fonte em modo paisagem */
+        font-size: 1.5rem;
+        /* Reduz o margin-bottom para economizar espaço vertical */
+        margin-bottom: 1rem;
+    }
+
+    main {
+        /* Reduz o padding vertical */
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .perfis {
+        /* Reduz o gap em modo paisagem */
+        gap: 1rem;
+    }
+
+    .perfil img {
+        /* Reduz o tamanho das imagens */
+        width: 80px;
+        height: 80px;
+    }
+
+    .perfil span {
+        /* Reduz a fonte */
+        font-size: 0.8rem;
+    }
+}
+
+/* ===========================
+   Theme Toggle Button
+   =========================== */
+
+.theme-toggle {
+    /* Posicionamento fixo no canto superior direito */
+    position: fixed;
+    /* Distância do topo */
+    top: 20px;
+    /* Distância da direita */
+    right: 20px;
+    /* Z-index alto para ficar sobre outros elementos */
+    z-index: 1000;
+    /* Tamanho do botão */
+    width: 50px;
+    height: 50px;
+    /* Padding interno */
+    padding: 0;
+    /* Remove borda padrão */
+    border: 2px solid var(--text-primary);
+    /* Cor de fundo com transparência */
+    background-color: var(--bg-secondary);
+    /* Define cantos arredondados */
+    border-radius: 50%;
+    /* Centraliza o ícone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Muda o cursor para pointer */
+    cursor: pointer;
+    /* Transição suave */
+    transition: all 0.3s ease;
+    /* Remove sombra padrão */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    /* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.1);
+    /* Aumenta a sombra */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:active {
+    /* Pequena compressão ao clicar */
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    /* Define o tamanho do ícone */
+    font-size: 1.5rem;
+    /* Linha de altura para centralizar */
+    line-height: 1;
+    /* Transição suave para transformação */
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:active .theme-icon {
+    /* Rotaciona o ícone ao clicar */
+    transform: rotate(20deg);
+}
+
+.theme-toggle:focus {
+    /* Define foco visível do botão */
+    outline: 3px solid var(--accent-color);
+    /* Adiciona espaço entre o foco e a borda */
+    outline-offset: 2px;
+}
+
+/* ===========================
+   Acessibilidade
+   =========================== */
+
+.perfil:focus {
+    /* Define uma borda visível quando o botão recebe foco via teclado */
+    outline: 3px solid var(--accent-color);
+    /* Adiciona espaço entre o foco e a borda */
+    outline-offset: 4px;
+    /* Define cantos arredondados */
+    border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        /* Remove praticamente a duração das animações para usuários com preferência de movimento reduzido */
+        animation-duration: 0.01ms !important;
+        /* Define que a animação execute apenas uma vez */
+        animation-iteration-count: 1 !important;
+        /* Remove praticamente a duração das transições */
+        transition-duration: 0.01ms !important;
+    }
+}
